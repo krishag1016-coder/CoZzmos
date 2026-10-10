@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoZzmos</title>
+
+  <!-- Connect your CSS file -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Connect your JavaScript file -->
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <!-- Add Starry Background -->
+  <div id="stars" aria-hidden="true"></div>
+
+  <header>
+    <a class="logo" href="index.html">🌙 CoZzmos</a>
+  </header>
+
+  <main>
+    <!-- HOMEPAGE -->
+    <section id="home-page">
+  <h1>CoZzmos</h1>
+
+  <p>
+    How focused do you feel?<br>
+    Explore your attention and memory through four short tests.
+  </p>
+
+  <button id="start-button" type="button">
+    Begin Test
+  </button>
+</section>
+
+      <p>
+        A cognitive check-in, not a medical diagnosis.
+      </p>
+    </section>
+
+    <!-- TEST SCREEN: hidden until the user starts -->
+    <section id="test-page" hidden>
+      <p id="test-progress">Test 1 of 4</p>
+      <h2 id="test-title"></h2>
+      <p id="test-instructions"></p>
+
+      <div id="test-area"></div>
+
+      <p id="test-feedback" aria-live="polite"></p>
+    </section>
+
+    <!-- RESULTS: hidden until the tests finish -->
+    <section id="results-page" hidden>
+      <h1>Your constellation</h1>
+
+      <div id="constellation"></div>
+
+      <h2>Overall summary</h2>
+      <p id="results-summary"></p>
+
+      <h2>Tips</h2>
+      <ul id="results-tips"></ul>
+
+      <button id="restart-button" type="button">
+        Try again
+      </button>
+    </section>
+  </main>
+</body>
+</html>

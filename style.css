@@ -1,0 +1,76 @@
+
+/* Keep the stars behind the page content */
+body {
+  background: #080b20;
+  isolation: isolate;
+}
+
+#stars {
+ position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-color: #080b20;
+
+  background-image:
+    radial-gradient(2px 2px at 30px 40px, white 99%, transparent),
+    radial-gradient(1px 1px at 80px 160px, white 99%, transparent),
+    radial-gradient(2px 2px at 150px 90px, #ddd6fe 99%, transparent),
+    radial-gradient(1px 1px at 220px 30px, white 99%, transparent),
+    radial-gradient(2px 2px at 270px 180px, white 99%, transparent),
+    radial-gradient(1px 1px at 340px 120px, white 99%, transparent);
+
+  background-size: 400px 240px;
+
+}
+
+/* Logo stays in the top corner */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Remove the previous main spacing */
+main {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Center the homepage */
+#home-page {
+  min-height: 100svh;
+  box-sizing: border-box;
+  padding: 100px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#home-page h1 {
+  margin: 0 0 20px;
+  font-size: clamp(56px, 10vw, 96px);
+  color: #cecbd6;
+}
+
+#home-page p {
+  max-width: 460px;
+  margin: 0 0 32px;
+  font-size: 20px;
+  line-height: 1.6;
+  color: white;
+}
+
+#start-button {
+  padding: 16px 40px;
+  border-radius: 30px;
+}
+
+/* Keep hidden screens hidden */
+[hidden] {
+  display: none !important;
+}
