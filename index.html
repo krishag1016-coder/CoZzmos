@@ -5,15 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CoZzmos</title>
 
-  <!-- Connect your CSS file -->
+  <!-- Link CSS file -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Connect your JavaScript file -->
+  <!-- Link JavaScript file -->
   <script src="script.js" defer></script>
 </head>
 
 <body>
-  <!-- Add Starry Background -->
+    <p id="medical-note">
+        A cognitive check-in, not a medical diagnosis.
+  </p>
+
   <div id="stars" aria-hidden="true"></div>
 
   <header>
@@ -33,12 +36,7 @@
   <button id="start-button" type="button">
     Begin Test
   </button>
-</section>
-
-      <p>
-        A cognitive check-in, not a medical diagnosis.
-      </p>
-    </section>
+  </section>
 
     <!-- TEST SCREEN: hidden until the user starts -->
     <section id="test-page" hidden>

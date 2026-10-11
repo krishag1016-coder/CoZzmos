@@ -1,16 +1,52 @@
+/* Shared styles */
+* {
+  box-sizing: border-box;
+}
 
-/* Keep the stars behind the page content */
 body {
+  margin: 0;
   background: #080b20;
+  color: white;
+  font-family: Arial, sans-serif;
   isolation: isolate;
 }
 
+main {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  font-family: inherit;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 18px 36px;
+  background: #c4b5fd;
+  color: #10102b;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ddd6fe;
+}
+
+button:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 5px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Starry background */
 #stars {
- position: fixed;
+  position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-
   background-color: #080b20;
 
   background-image:
@@ -22,27 +58,48 @@ body {
     radial-gradient(1px 1px at 340px 120px, white 99%, transparent);
 
   background-size: 400px 240px;
-
 }
 
-/* Logo stays in the top corner */
+/* Larger glowing stars */
+.star {
+  position: absolute;
+  color: #fff5ce;
+  font-size: 20px;
+  text-shadow: 0 0 12px #fff5ce;
+  animation: twinkle 3s ease-in-out infinite alternate;
+}
+
+.star:nth-child(1) { top: 12%; left: 15%; }
+.star:nth-child(2) { top: 22%; left: 75%; }
+.star:nth-child(3) { top: 65%; left: 10%; }
+.star:nth-child(4) { top: 80%; left: 70%; }
+.star:nth-child(5) { top: 10%; left: 48%; }
+.star:nth-child(6) { top: 48%; left: 88%; }
+.star:nth-child(7) { top: 88%; left: 35%; }
+.star:nth-child(8) { top: 38%; left: 25%; }
+
+@keyframes twinkle {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
+
+/* Homepage */
 header {
   position: absolute;
   top: 0;
   left: 0;
+  padding: 24px;
 }
 
-/* Remove the previous main spacing */
-main {
-  max-width: none;
-  margin: 0;
-  padding: 0;
+.logo {
+  color: white;
+  text-decoration: none;
+  font-size: 26px;
+  font-weight: bold;
 }
 
-/* Center the homepage */
 #home-page {
   min-height: 100svh;
-  box-sizing: border-box;
   padding: 100px 24px;
   display: flex;
   flex-direction: column;
@@ -54,23 +111,459 @@ main {
 #home-page h1 {
   margin: 0 0 20px;
   font-size: clamp(56px, 10vw, 96px);
-  color: #cecbd6;
+  color: #eee8ff;
 }
 
 #home-page p {
-  max-width: 460px;
+  max-width: 550px;
   margin: 0 0 32px;
-  font-size: 20px;
-  line-height: 1.6;
   color: white;
+  font-size: 24px;
+  line-height: 1.6;
 }
 
 #start-button {
-  padding: 16px 40px;
   border-radius: 30px;
 }
 
-/* Keep hidden screens hidden */
-[hidden] {
-  display: none !important;
+/* Black background during all tests */
+body.pvt-mode {
+  background: black;
 }
+
+body.pvt-mode #stars,
+body.pvt-mode header {
+  display: none;
+}
+
+/* Test layout */
+body.pvt-mode #test-page {
+  min-height: 100svh;
+  max-width: none;
+  margin: 0;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#test-progress {
+  margin: 0;
+  color: white;
+  font-size: 20px;
+}
+
+#test-title {
+  margin: 20px 0;
+  color: white;
+  font-size: clamp(30px, 4vw, 44px);
+}
+
+/* Instructions begin around 1/8 down the screen.
+   Normal flow keeps longer text from overlapping. */
+#test-instructions {
+  width: min(100%, 850px);
+  margin: max(16px, calc(12.5svh - 125px)) 0 32px;
+  color: white;
+  font-size: clamp(22px, 2.5vw, 28px);
+  line-height: 1.6;
+}
+
+#test-area {
+  width: 100%;
+  margin: 24px 0;
+  padding: 0;
+  border: none;
+}
+
+#test-feedback {
+  color: white;
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+/* Large test letters and words */
+.stimulus {
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(60px, 12vw, 120px);
+  font-weight: bold;
+}
+
+/* Yellow PVT counter */
+#box,
+#box:hover {
+  display: block;
+  width: min(90%, 500px);
+  height: 220px;
+  margin: 0 auto;
+  background: black;
+  color: #ffdf00;
+  border: 2px solid #777;
+  font-family: inherit;
+  font-size: clamp(48px, 10vw, 96px);
+}
+
+#color-buttons button {
+  margin: 6px;
+}
+
+/* Results */
+#results-page {
+  min-height: 100svh;
+  padding: 100px 24px 40px;
+  text-align: center;
+}
+
+#results-page h1 {
+  font-size: 44px;
+}
+
+#results-page p,
+#results-page li {
+  font-size: 22px;
+  line-height: 1.6;
+}
+
+#results-tips {
+  display: inline-block;
+  text-align: left;
+}
+
+#constellation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin: 30px 0;
+}
+
+.result-star {
+  color: #ffdf00;
+  font-size: 26px;
+  line-height: 1.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star {
+    animation: none;
+  }
+}
+
+/* Four stars, each with its own explanation underneath */
+#constellation {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  max-width: 1100px;
+  margin: 40px auto;
+}
+
+.star-card {
+  padding: 28px;
+  border: 1px solid #655b91;
+  border-radius: 24px;
+  background: rgba(16, 16, 43, 0.9);
+  text-align: center;
+}
+
+.score-star {
+  color: #ffdf00;
+  font-size: 90px;
+  text-shadow: 0 0 24px rgba(255, 223, 0, 0.45);
+}
+
+.star-card h2 {
+  margin: 12px 0;
+  color: white;
+  font-size: 30px;
+}
+
+.star-score {
+  color: #ffdf00;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.star-card h3 {
+  color: #ddd6fe;
+  font-size: 21px;
+  line-height: 1.5;
+}
+
+#results-page .star-card p {
+  color: white;
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+.results-note {
+  max-width: 850px;
+  margin: 36px auto;
+  padding: 24px;
+  border-radius: 20px;
+  background: rgba(16, 16, 43, 0.9);
+}
+
+#reflection-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+#reflection-buttons button[aria-pressed="true"] {
+  background: #ffdf00;
+  color: #10102b;
+}
+
+@media (max-width: 700px) {
+  #constellation {
+    grid-template-columns: 1fr;
+  }
+}
+
+#medical-note {
+  position: fixed;
+  bottom: 12px;
+  left: 16px;
+  margin: 0;
+  z-index: 100;
+  color: white;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.4;
+  pointer-events: none;
+}
+
+
+
+
+
+/* Results-only constellation layout */
+#results-page #constellation {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 50px 24px;
+  max-width: 1200px;
+  margin: 60px auto;
+}
+
+
+/* Place the four stars in a diamond */
+#constellation .star-card:nth-child(1) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+
+#constellation .star-card:nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+
+#constellation .star-card:nth-child(3) {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+
+#constellation .star-card:nth-child(4) {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+
+/* Remove card boxes so stars sit directly in the sky */
+#results-page .star-card {
+  position: relative;
+  min-width: 0;
+  padding: 0 12px 20px;
+  border: none;
+  background: transparent;
+  transform: none;
+}
+
+
+/* Glowing stars */
+#results-page .score-star {
+  position: relative;
+  z-index: 1;
+  height: 110px;
+  font-size: 100px;
+  line-height: 110px;
+  color: #fff1a8;
+  text-shadow:
+    0 0 12px #ffdf00,
+    0 0 35px rgba(255, 223, 0, 0.6);
+}
+
+
+/* Draw two lines from each side star to the top and bottom stars.
+   Their lengths follow the actual grid rows. */
+#constellation .star-card:nth-child(2)::before,
+#constellation .star-card:nth-child(3)::before {
+  content: "";
+  position: absolute;
+  top: 55px;
+  width: calc(100% + 24px);
+  height: calc(100% + 50px);
+  border-top: 1px solid #a99de0;
+  pointer-events: none;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+
+#constellation .star-card:nth-child(2)::before {
+  left: 50%;
+  transform: skewY(-35deg);
+  transform-origin: top left;
+}
+
+
+#constellation .star-card:nth-child(3)::before {
+  right: 50%;
+  transform: skewY(35deg);
+  transform-origin: top right;
+}
+
+
+/* Keep explanations readable against the stars */
+#results-page .star-card p {
+  position: relative;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(8, 11, 32, 0.92);
+}
+
+
+/* On smaller screens, connect stars vertically */
+@media (max-width: 900px) {
+  #results-page #constellation {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    max-width: 550px;
+  }
+
+
+  #constellation .star-card:nth-child(n) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+
+  #constellation .star-card:nth-child(2)::before,
+  #constellation .star-card:nth-child(3)::before {
+    display: none;
+  }
+
+
+  #results-page #constellation::before {
+    content: "";
+    position: absolute;
+    top: 55px;
+    bottom: 55px;
+    left: 50%;
+    border-left: 1px solid #a99de0;
+    opacity: 0.5;
+    z-index: -1;
+  }
+
+
+  #results-page .star-card {
+    background: rgba(8, 11, 32, 0.85);
+    border-radius: 20px;
+  }
+}
+
+/* Use equal grid rows so all four connections line up */
+#results-page #constellation {
+  --star-gap: 50px;
+
+  grid-auto-rows: 1fr;
+  row-gap: var(--star-gap);
+  isolation: isolate;
+}
+
+/* Four lines: two from the left star, two from the right */
+#constellation .star-card:nth-child(2)::before,
+#constellation .star-card:nth-child(2)::after,
+#constellation .star-card:nth-child(3)::before,
+#constellation .star-card:nth-child(3)::after {
+  content: "";
+  position: absolute;
+  top: 55px;
+  width: calc(100% + 24px);
+  height: calc(100% + var(--star-gap));
+  border: none;
+  transform: none;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.75;
+
+  background: linear-gradient(
+    to bottom right,
+    transparent calc(50% - 1px),
+    #a99de0 50%,
+    transparent calc(50% + 1px)
+  );
+}
+
+/* Left → top */
+#constellation .star-card:nth-child(2)::before {
+  left: 50%;
+  top: calc(55px - 100% - var(--star-gap));
+
+  background: linear-gradient(
+    to top right,
+    transparent calc(50% - 1px),
+    #a99de0 50%,
+    transparent calc(50% + 1px)
+  );
+}
+
+/* Left → bottom */
+#constellation .star-card:nth-child(2)::after {
+  left: 50%;
+}
+
+/* Right → top */
+#constellation .star-card:nth-child(3)::before {
+  right: 50%;
+  top: calc(55px - 100% - var(--star-gap));
+}
+
+/* Right → bottom */
+#constellation .star-card:nth-child(3)::after {
+  right: 50%;
+
+  background: linear-gradient(
+    to top right,
+    transparent calc(50% - 1px),
+    #a99de0 50%,
+    transparent calc(50% + 1px)
+  );
+}
+
+/* Keep the vertical layout on smaller screens */
+@media (max-width: 900px) {
+  #results-page #constellation {
+    grid-auto-rows: auto;
+  }
+
+  #constellation .star-card:nth-child(2)::before,
+  #constellation .star-card:nth-child(2)::after,
+  #constellation .star-card:nth-child(3)::before,
+  #constellation .star-card:nth-child(3)::after {
+    display: none;
+  }
+}
+
+
+
